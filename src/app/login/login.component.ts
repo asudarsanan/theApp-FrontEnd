@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
       (response) => {
         this.user = response
         sessionStorage.setItem("user", JSON.stringify(this.user));
-        console.log("this is username from response"+this.user.username);
+        console.log("this is username from response "+this.user.username);
         this.tryToLogin = false;
         this.router.navigate(['/userHome']);
       },

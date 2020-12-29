@@ -9,12 +9,12 @@ import { User } from '../model/user';
   providedIn: 'root'
 })
 export class LoginService {
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'Access-Control-Allow-Origin': '*'
-    })
-  };
+  // private httpOptions = {
+  //   headers: new HttpHeaders({
+  //     'content-type': 'application/json'
+  //   })
+  // };
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   url!: string;
 
@@ -26,7 +26,7 @@ export class LoginService {
     console.log(user.password);
     user1=user;
     this.url='http://localhost:8081/user/login';
-    return this.http.post<User>(this.url,user,this.httpOptions)
+    return this.http.post<User>(this.url,user,{headers:this.headers})
     .pipe(
       catchError(this.handleError)
       );
