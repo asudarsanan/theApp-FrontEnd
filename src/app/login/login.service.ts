@@ -24,8 +24,8 @@ export class LoginService {
     let user1!: User;
     console.log(user.username);
     console.log(user.password);
-    user1=user;
-    this.url='http://localhost:8081/user/login';
+    this.url='http://35.222.170.65:8081/user/login';
+    // this.url='http://localhost:8081/user/login';
     return this.http.post<User>(this.url,user,{headers:this.headers})
     .pipe(
       catchError(this.handleError)
