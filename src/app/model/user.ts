@@ -1,8 +1,8 @@
 export class User {
     username!: string;
-    password!: string;
-    email!: string;
-    phone!: string;
-    message!: string;
+    password?: string | null;
+    emailid!: string | null;
+    phone!: string | null;
+    message!: string | null;
 
 }

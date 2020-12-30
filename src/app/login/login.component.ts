@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
   errorMessage!:any;
   successMessage!:any;
   tryToLogin!: boolean;
+  thisIsError!:boolean;
+  user1!:User;
   
   constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) {
 
@@ -42,13 +44,17 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.user).subscribe(
       (response) => {
         this.user = response
-        sessionStorage.setItem("user", JSON.stringify(this.user));
-        console.log("this is username from response "+this.user.username);
+        sessionStorage.setItem("user", JSON.stringify(response));
+        console.log("this is username from response "+ this.user.username);
+        // localStorage.setItem('username',this.user.username);
+        // localStorage.setItem('email',this.user.email);
+
         this.tryToLogin = false;
-        this.router.navigate(['/userHome']);
+        this.router.navigate(['/userhome']);
       },
       (error) => {
         this.tryToLogin = false;
+        this.thisIsError = true;
         this.errorMessage = <any> error;
       }
     )

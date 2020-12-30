@@ -1,10 +1,5 @@
-<div class="page-top-offset"></div>
 
-<div class="row">
-    <div class="container-fluid">
-        <div class="col-md-4 col-md-offset-4">
-            <div class="home-register-bg">
-
+<div class="wrapper fadeInDown">
                 <h3 class="title">Login</h3>
                 <form class="form" [formGroup]='loginForm' (ngSubmit)="login()">
 
@@ -17,9 +12,6 @@
                             <div *ngIf="loginForm.controls.username.hasError('required')">
                                 <strong class="error-message">Username is Mandatory</strong>
                             </div>
-                            <!-- <div *ngIf="loginForm.controls.emailId.dirty && loginForm.controls.emailId.hasError('emailIdPatternError')">
-                                <strong class="error-message">Email Id pattern is invalid</strong>
-                            </div> -->
                         </div>
                     </div>
 
@@ -32,33 +24,26 @@
                             <div *ngIf="loginForm.controls.password.hasError('required')">
                                 <strong class="error-message">Password is Mandatory</strong>
                             </div>
-                            <!-- <div *ngIf="loginForm.controls.password.dirty && loginForm.controls.password.hasError('passwordPatternError')">
-                                <strong class="error-message">Password pattern is invalid</strong>
-                            </div> -->
                         </div>
                     </div>
                     <br>
                     <br>
-                    <div class="row">
-                        
-                            <button class="col-md-4 col-md-offset-1 btn btn-success" [disabled]="!loginForm.valid" >
+
+            
+                            <button class="btn btn-success" [disabled]="!loginForm.valid" >
                                 Login
                             </button>
                         
-                            <button class="col-md-4 col-md-offset-2 btn btn-primary" type="reset" (click)="errorMessage=null" [disabled]="loginForm.pristine">
+                            <button class="btn btn-primary" type="reset" (click)="errorMessage=null" [disabled]="loginForm.pristine">
                                 Reset
                             </button>
-                        
-
-                    </div>
-
 
                 </form>
                 <div *ngIf="tryToLogin">
                     <h3 class="text-center"> Logging...Please Wait!!</h3>
                 </div>
-                <h4 class="error-message text-justify">{{errorMessage}}</h4>
-            </div>
-        </div>
-    </div>
+                <div *ngIf="thisIsError">
+                    <h3 class="alert alert-danger"> {{errorMessage}}</h3>
+                </div>
+
 </div>
